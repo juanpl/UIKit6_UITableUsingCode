@@ -36,6 +36,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         devicesTableView.backgroundColor = .blue
         devicesTableView.dataSource = self
         devicesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        //register the custom cell
+        devicesTableView.register(SwiftBetaCustomCell.self, forCellReuseIdentifier: "SwiftBetaCustomCell")
         view.addSubview(devicesTableView)
         
         NSLayoutConstraint.activate([
@@ -52,7 +54,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SwiftBetaCustomCell", for: indexPath) as! SwiftBetaCustomCell
+        
+        let model = house[indexPath.row]
+
+        cell.configure(model: model)
+        
         return cell
     }
 
