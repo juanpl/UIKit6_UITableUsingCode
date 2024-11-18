@@ -19,7 +19,7 @@ class ViewController: UIViewController{
     
     override func loadView() {
         let tableView = UITableView()
-        self.dataSource = SwiftBetaTableViewDataSource(dataSource: house)
+        self.dataSource = SwiftBetaTableViewDataSource(dataSource: allMyDevices)
         self.delegate = SwiftBetaTableViewDelegate()
         tableView.dataSource = dataSource
         tableView.delegate = delegate

@@ -17,25 +17,47 @@ let house = [
     
 ]
 
+let work = [
+    Device(title: "iPhone", image: "iphone"),
+    Device(title: "iPad", image: "ipad"),
+    Device(title: "Airpods", image: "airpods"),
+    Device(title: "Apple Watch", image: "applewatch"),
+]
+
+let allMyDevices = [house, work]
+
 class SwiftBetaTableViewDataSource: NSObject, UITableViewDataSource {
     
-    private let dataSource: [Device]
+    private let dataSource: [[Device]]
     
-    init(dataSource: [Device]) {
+    init(dataSource: [[Device]]) {
         self.dataSource = dataSource
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwiftBetaCustomCell", for: indexPath) as! SwiftBetaCustomCell
         
-        let model = dataSource[indexPath.row]
-
+        let model = dataSource[indexPath.section][indexPath.row]
         cell.configure(model: model)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Device House"
+        } else {
+            return "Device Work"
+        }
+    }
+
+    
 }
