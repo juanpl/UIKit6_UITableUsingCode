@@ -35,7 +35,6 @@ class SwiftBetaCustomCell: UITableViewCell {
             deviceImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             deviceImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             deviceImageView.widthAnchor.constraint(equalToConstant: 40),
-            deviceImageView.heightAnchor.constraint(equalToConstant: 40),
             
             deviceNameLabel.leadingAnchor.constraint(equalTo: deviceImageView.trailingAnchor, constant: 20),
             deviceNameLabel.centerYAnchor.constraint(equalTo: deviceImageView.centerYAnchor)
